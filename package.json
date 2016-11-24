@@ -1,0 +1,11 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "description": "doc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lorenzo Delgado <lorenzo.delgado@lnsd.es>",
+  "license": "MPL-2.0"
+}
