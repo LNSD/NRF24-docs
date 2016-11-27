@@ -9,6 +9,8 @@
   "author": "Lorenzo Delgado <lorenzo.delgado@lnsd.es>",
   "license": "MPL-2.0",
   "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
@@ -17,13 +19,13 @@
     "gulp-livereload": "^3.8.1",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
-    "gulp-scss-lint": "^0.4.0",
-    "gulp-scss-lint-stylish": "^1.0.1",
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.4",
-    "jshint-stylish": "^2.2.1"
-  }
+    "jshint-stylish": "^2.2.1",
+    "normalize-scss": "^6.0.0"
+  },
+  "dependencies": {}
 }

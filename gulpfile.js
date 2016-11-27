@@ -7,11 +7,9 @@ var gulp        = require('gulp'),
     filter      = require('gulp-filter'),
     sourcemaps  = require('gulp-sourcemaps'),
 
-    pug             = require('gulp-pug'),
-    sass            = require('gulp-sass'),
-    scsslint        = require('gulp-scss-lint'),
-    scsslintstylish = require('gulp-scss-lint-stylish'),
-    jshint          = require('gulp-jshint');
+    pug         = require('gulp-pug'),
+    sass        = require('gulp-sass'),
+    jshint      = require('gulp-jshint');
 
 var config = require('./gulp.config');
 
@@ -20,7 +18,7 @@ var config = require('./gulp.config');
 gulp.task('default', sequence('build', ['serve', 'watch']));
 
 /* Build everything */
-gulp.task('build', ['build-pug', 'scss-lint', 'build-css', 'jshint', 'build-js', 'copy-assets']);
+gulp.task('build', ['build-pug', 'build-css', 'jshint', 'build-js', 'copy-fonts', 'copy-assets']);
 
 
 /* Compile pug files */
@@ -41,17 +39,11 @@ gulp.task('build-pug', function () {
         .pipe(connect.reload());
 });
 
-/* Run styles through scss-lint */
-gulp.task('scss-lint', function() {
-    return gulp.src(config.input.styles)
-        .pipe(scsslint({ customReport: scsslintstylish }));
-});
-
 /* Compile scss files */
 gulp.task('build-css', function() {
     return gulp.src(config.input.styles)
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass({includePaths: config.vendor.sass}).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.output.css))
         .pipe(connect.reload());
@@ -64,7 +56,7 @@ gulp.task('jshint', function() {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
-/* Concat scripts files, minify if --type production */
+/* Concat scripts files (minify if --type production) */
 gulp.task('build-js', function() {
     return gulp.src(config.input.scripts)
         .pipe(sourcemaps.init())
@@ -73,6 +65,13 @@ gulp.task('build-js', function() {
         .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.output.js))
+        .pipe(connect.reload());
+});
+
+/* Copy fonts to output dir */
+gulp.task('copy-fonts', function () {
+    return gulp.src(config.input.fonts)
+        .pipe(gulp.dest(config.output.fonts))
         .pipe(connect.reload());
 });
 
@@ -88,12 +87,13 @@ gulp.task('copy-assets', function () {
 gulp.task('watch', function() {
     gulp.watch(config.input.templates, ['build-pug']);
     gulp.watch(config.input.scripts, ['jshint', 'build-js']);
-    gulp.watch(config.input.styles, ['scss-lint', 'build-css']);
+    gulp.watch(config.input.styles, ['build-css']);
+    gulp.watch(config.input.fonts, ['copy-fonts']);
     gulp.watch(config.input.assets, ['copy-assets']);
 });
 
 /* Serve pages and enable livereload */
-gulp.task( 'serve', function() {
+gulp.task('serve', function() {
     connect.server({
         root: config.basedir.output,
         livereload: true
