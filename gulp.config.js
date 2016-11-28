@@ -23,12 +23,13 @@ exports.dir = {
         templates: exports.basedir.input + '/templates',
         styles: exports.basedir.input + '/styles',
         scripts: exports.basedir.input + '/scripts',
-        assets: exports.basedir.input + '/assets'
+        assets: exports.basedir.input + '/assets',
+        fonts: exports.basedir.input + '/fonts'
     },
     output: {
         html: exports.basedir.output + '/',
         css: exports.basedir.output + '/assets/stylesheets/',
-        js: exports.basedir.output + '/assets/scripts',
+        js: exports.basedir.output + '/assets/scripts/',
         assets: exports.basedir.output + '/assets/',
         fonts: exports.basedir.output + '/assets/fonts/'
     }
@@ -37,9 +38,13 @@ exports.dir = {
 exports.input = {
     templates: exports.dir.input.templates + '/**/*.pug',
     styles: exports.dir.input.styles + '/**/*.scss',
+    css: exports.dir.input.fonts + '/arduino/css/arduino-style.css',
     scripts: exports.dir.input.scripts + '/**/*.js',
     assets: exports.dir.input.assets + '/**/*',
-    fonts: exports.vendor.fonts.fa + '/*'
+    fonts: [
+        exports.vendor.fonts.fa + '/*',
+        exports.dir.input.fonts + '/arduino/font/*'
+    ]
 };
 
 exports.output = exports.dir.output;

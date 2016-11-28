@@ -1,6 +1,7 @@
 var gulp        = require('gulp'),
     gutil       = require('gulp-util'),
     sequence    = require('gulp-sequence'),
+    merge       = require('merge-stream'),
     connect     = require('gulp-connect'),
     concat      = require('gulp-concat'),
     uglify      = require('gulp-uglify'),
@@ -41,10 +42,15 @@ gulp.task('build-pug', function () {
 
 /* Compile scss files */
 gulp.task('build-css', function() {
-    return gulp.src(config.input.styles)
+    var sassStream = gulp.src(config.input.styles)
         .pipe(sourcemaps.init())
-        .pipe(sass({includePaths: config.vendor.sass}).on('error', sass.logError))
-        .pipe(sourcemaps.write())
+        .pipe(sass({includePaths: config.vendor.sass}).on('error', sass.logError));
+
+    var cssStream = gulp.src(config.input.css);
+
+    return merge(cssStream, sassStream)
+        .pipe(concat('main.css'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(config.output.css))
         .pipe(connect.reload());
 });
@@ -63,7 +69,7 @@ gulp.task('build-js', function() {
         .pipe(concat('bundle.js'))
         //only uglify if gulp is ran with '--type production'
         .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(config.output.js))
         .pipe(connect.reload());
 });
@@ -87,7 +93,7 @@ gulp.task('copy-assets', function () {
 gulp.task('watch', function() {
     gulp.watch(config.input.templates, ['build-pug']);
     gulp.watch(config.input.scripts, ['jshint', 'build-js']);
-    gulp.watch(config.input.styles, ['build-css']);
+    gulp.watch([config.input.styles, config.input.css], ['build-css']);
     gulp.watch(config.input.fonts, ['copy-fonts']);
     gulp.watch(config.input.assets, ['copy-assets']);
 });

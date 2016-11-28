@@ -1,8 +1,8 @@
 {
-  "name": "doc",
+  "name": "docs",
   "version": "1.0.0",
-  "description": "doc",
-  "main": "index.js",
+  "description": "NRF24 library documentation",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +25,7 @@
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
+    "merge-stream": "^1.0.1",
     "normalize-scss": "^6.0.0"
   },
   "dependencies": {}
