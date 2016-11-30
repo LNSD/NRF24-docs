@@ -1,0 +1,20 @@
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <defs>
+      <style>#logo path{fill:none;stroke:#000;stroke-linecap:round;stroke-width:10px}.clockwise{animation:clockwise 10s linear infinite}.anticlockwise{animation:anticlockwise 10s linear infinite}@keyframes clockwise{from{transform-origin:100px 100px;transform:rotate(0)}to{transform-origin:100px 100px;transform:rotate(360deg)}}@keyframes anticlockwise{from{transform-origin:100px 100px;transform:rotate(360deg)}to{transform-origin:100px 100px;transform:rotate(0)}}</style>
+    </defs>
+    <g id="inner" class="rotate clockwise">
+      <path d="M104.6,128.81A29.19,29.19,0,0,1,71.19,95.4"/>
+      <path d="M95.4,71.19a29.19,29.19,0,0,1,33.52,32.61"/>
+    </g>
+    <g id="middle" class="rotate anticlockwise">
+      <path d="M139.82,142.61a58.32,58.32,0,0,1-79.65,0"/>
+      <path d="M118,44.51a58.41,58.41,0,0,1,39,67.65"/>
+      <path d="M42.94,112.14A58.41,58.41,0,0,1,82,44.51"/>
+    </g>
+    <g id="outer" class="rotate clockwise">
+      <path d="M147.12,173.74a87.57,87.57,0,0,1-94.24,0"/>
+      <path d="M173.74,52.88a87.57,87.57,0,0,1,0,94.23"/>
+      <path d="M52.88,26.26a87.57,87.57,0,0,1,94.24,0"/>
+      <path d="M26.26,147.12a87.57,87.57,0,0,1,0-94.24"/>
+    </g>
+  </svg>

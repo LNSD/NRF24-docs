@@ -1,0 +1,38 @@
+//- Layout template
+doctype html
+block vars
+html(lang='en')
+    block head
+        head
+            block meta
+                meta(charset='utf-8')
+
+            title
+                block title
+                    = title
+
+            block link
+
+            block styles
+                // Styles
+                link(rel='stylesheet', href='/assets/stylesheets/bundle.css')
+
+            block fonts
+                // Fonts
+                link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet')
+
+            block head-scripts
+                // Scripts
+
+    block body
+        body
+            block header
+            block content
+                h1 You shouldn't be watching this! :(
+                    p
+                        | This is worse than a 404. Please
+                        a(href='mailto:contact@lnsd.es') &nbsp;email me
+
+            block footer
+            block foot-scripts
+                // Scripts

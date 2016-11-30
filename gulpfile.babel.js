@@ -15,7 +15,7 @@ requireTasks({
 
 /* Watch these files for changes and run the task on update */
 gulp.task('watch', () => {
-    gulp.watch(config.input.templates, ['lint-pug', 'build-html']);
+    gulp.watch([config.input.content.individuals, config.input.templates], ['lint-pug', 'build-html']);
     gulp.watch(config.input.scripts, ['lint-js', 'build-js']);
     gulp.watch([config.input.styles.bundle, config.input.css, config.input.styles.individuals], ['build-css']);
     gulp.watch(config.input.fonts, ['copy-fonts']);

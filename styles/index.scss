@@ -1,0 +1,52 @@
+// Home partial
+@import "base";
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: {
+    top: 14%;
+    bottom: 18%;
+  };
+}
+
+.home-cover {
+  background: {
+    image: url("../low-poly-texture-bg.jpg");
+    size: 100% auto;
+    position: center top;
+    repeat: no-repeat;
+  }
+}
+
+.header-brief {
+  margin: 0 auto;
+  margin-top: 10px;
+
+  color: white;
+  font-family: $body-font-family;
+  font-size: 1.2em;
+
+  a {
+    color: white;
+  }
+}
+
+.logo-img {
+  width: 166px;
+  height: 166px;
+  margin: 0 auto;
+}
+
+.logo-font {
+  font-family: $logo-font-family;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+}
+
+.logo-title {
+  margin: 0 auto;
+  padding-left: 10px;
+  font-size: 4em;
+  color: white;
+}
