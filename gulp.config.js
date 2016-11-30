@@ -1,9 +1,10 @@
 `use strict`;
 
 exports.basedir = {
-    input: `.`,
-    output: `./html`,
-    npm: `./node_modules`
+    input: '.',
+    output: './html',
+    npm: './node_modules',
+    gulp: './gulp'
 };
 
 exports.vendor = {
@@ -41,7 +42,7 @@ exports.input = {
     templates: `${exports.dir.input.templates}/**/*.pug`,
     styles: {
         bundle: `${exports.dir.input.styles}/bundle.scss`,
-        single: [
+        individuals: [
             `${exports.dir.input.styles}/**/*.scss`,
             `!${exports.dir.input.styles}/bundle.scss`
         ]
