@@ -1,29 +1,30 @@
-var gulp        = require('gulp'),
-    gutil       = require('gulp-util'),
-    sequence    = require('gulp-sequence'),
-    merge       = require('merge-stream'),
-    connect     = require('gulp-connect'),
-    concat      = require('gulp-concat'),
-    uglify      = require('gulp-uglify'),
-    filter      = require('gulp-filter'),
-    sourcemaps  = require('gulp-sourcemaps'),
+'use strict';
+import gulp from 'gulp';
+import gutil  from 'gulp-util';
+import sequence from 'gulp-sequence';
+import merge from 'merge-stream';
+import connect from 'gulp-connect';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
+import filter from 'gulp-filter';
+import sourcemaps from 'gulp-sourcemaps';
 
-    pug         = require('gulp-pug'),
-    sass        = require('gulp-sass'),
-    jshint      = require('gulp-jshint');
+import pug from 'gulp-pug';
+import sass from 'gulp-sass';
+import jshint from 'gulp-jshint';
 
-var config = require('./gulp.config');
+import config from './gulp.config';
 
 
 /* Run the watch task when gulp is called without arguments */
 gulp.task('default', sequence('build', ['serve', 'watch']));
 
 /* Build everything */
-gulp.task('build', ['build-pug', 'build-css', 'jshint', 'build-js', 'copy-fonts', 'copy-assets']);
+gulp.task('build', ['build-html', 'build-css', 'jshint', 'build-js', 'copy-fonts', 'copy-assets']);
 
 
-/* Compile pug files */
-gulp.task('build-pug', function () {
+/* Compile pug files into html */
+gulp.task('build-html', () => {
 
     /* function callback(file) {
      if (file.path.search('index') !== -1) {
@@ -41,30 +42,41 @@ gulp.task('build-pug', function () {
 });
 
 /* Compile scss files */
-gulp.task('build-css', function() {
-    var sassStream = gulp.src(config.input.styles)
+gulp.task('build-css', ['build-bundle-css', 'build-single-css']);
+
+gulp.task('build-bundle-css', () => {
+    const sassStream = gulp.src(config.input.styles.bundle)
         .pipe(sourcemaps.init())
         .pipe(sass({includePaths: config.vendor.sass}).on('error', sass.logError));
 
-    var cssStream = gulp.src(config.input.css);
+    const cssStream = gulp.src(config.input.css);
 
     return merge(cssStream, sassStream)
-        .pipe(concat('main.css'))
+        .pipe(concat('bundle.css'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(config.output.css))
+        .pipe(connect.reload());
+});
+
+gulp.task('build-single-css', () => {
+    gulp.src(config.input.styles.single)
+        .pipe(sourcemaps.init())
+        .pipe(sass({includePaths: config.vendor.sass}).on('error', sass.logError))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(config.output.css))
         .pipe(connect.reload());
 });
 
 /* Run scripts through jshint */
-gulp.task('jshint', function() {
-    return gulp.src(config.input.scripts)
+gulp.task('jshint', () => {
+    gulp.src(config.input.scripts)
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
 /* Concat scripts files (minify if --type production) */
-gulp.task('build-js', function() {
-    return gulp.src(config.input.scripts)
+gulp.task('build-js', () => {
+    gulp.src(config.input.scripts)
         .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
         //only uglify if gulp is ran with '--type production'
@@ -75,31 +87,31 @@ gulp.task('build-js', function() {
 });
 
 /* Copy fonts to output dir */
-gulp.task('copy-fonts', function () {
-    return gulp.src(config.input.fonts)
+gulp.task('copy-fonts', () => {
+    gulp.src(config.input.fonts)
         .pipe(gulp.dest(config.output.fonts))
         .pipe(connect.reload());
 });
 
 /* Copy assets to output dir */
-gulp.task('copy-assets', function () {
-    return gulp.src(config.input.assets)
+gulp.task('copy-assets', () => {
+    gulp.src(config.input.assets)
         .pipe(gulp.dest(config.output.assets))
         .pipe(connect.reload());
 });
 
 
 /* Watch these files for changes and run the task on update */
-gulp.task('watch', function() {
-    gulp.watch(config.input.templates, ['build-pug']);
+gulp.task('watch', () => {
+    gulp.watch(config.input.templates, ['build-html']);
     gulp.watch(config.input.scripts, ['jshint', 'build-js']);
-    gulp.watch([config.input.styles, config.input.css], ['build-css']);
+    gulp.watch([config.input.styles.bundle, config.input.css, config.input.styles.single], ['build-css']);
     gulp.watch(config.input.fonts, ['copy-fonts']);
     gulp.watch(config.input.assets, ['copy-assets']);
 });
 
 /* Serve pages and enable livereload */
-gulp.task('serve', function() {
+gulp.task('serve', () => {
     connect.server({
         root: config.basedir.output,
         livereload: true
