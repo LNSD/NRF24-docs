@@ -23,6 +23,7 @@ exports.vendor = {
 
 exports.dir = {
     input: {
+        content: `${exports.basedir.input}/content`,
         templates: `${exports.basedir.input}/templates`,
         styles: `${exports.basedir.input}/styles`,
         scripts: `${exports.basedir.input}/scripts`,
@@ -39,6 +40,9 @@ exports.dir = {
 };
 
 exports.input = {
+    content: {
+        individuals: `${exports.dir.input.content}/index.md`,
+    },
     templates: `${exports.dir.input.templates}/**/*.pug`,
     styles: {
         bundle: `${exports.dir.input.styles}/bundle.scss`,

@@ -1,6 +1,6 @@
 ---
 title: NRF24
-template: home
+template: index
 ---
 
 ## NRF24

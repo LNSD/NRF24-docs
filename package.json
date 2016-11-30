@@ -18,9 +18,13 @@
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
     "gulp-filter": "^4.0.0",
+    "gulp-front-matter": "^1.3.0",
     "gulp-jshint": "^2.0.4",
+    "gulp-layout": "0.0.4",
     "gulp-livereload": "^3.8.1",
+    "gulp-markdown": "^1.2.0",
     "gulp-pug": "^3.1.0",
+    "gulp-pug-linter": "^0.4.1",
     "gulp-require-tasks": "^1.0.5",
     "gulp-sass": "^2.3.2",
     "gulp-sequence": "^0.4.6",
@@ -30,7 +34,8 @@
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "merge-stream": "^1.0.1",
-    "normalize-scss": "^6.0.0"
+    "normalize-scss": "^6.0.0",
+    "puglint-stylish": "^0.1.1"
   },
   "dependencies": {}
 }
