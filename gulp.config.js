@@ -1,5 +1,10 @@
 `use strict`;
 
+import fs from 'fs';
+
+/**
+ * Base directories
+ */
 exports.basedir = {
     input: '.',
     output: './html',
@@ -7,20 +12,26 @@ exports.basedir = {
     gulp: './gulp'
 };
 
+/**
+ * Vendor assets directories
+ */
 exports.vendor = {
     sass: [
-        `${exports.basedir.npm}/normalize-scss/sass/`,
-        `${exports.basedir.npm}/bootstrap-sass/assets/stylesheets/`,
-        `${exports.basedir.npm}/font-awesome/scss/`
+        `${exports.basedir.npm}/bootstrap-sass/assets/stylesheets`,
+        `${exports.basedir.npm}/font-awesome/scss`
     ],
     js: {
-        bootstrap: `${exports.basedir.npm}/bootstrap-sass/assets/javascripts/`
+        bootstrap: `${exports.basedir.npm}/bootstrap-sass/assets/javascripts`
     },
     fonts: {
         fa: `${exports.basedir.npm}/font-awesome/fonts`
     }
 };
 
+/**
+ * - input: Sources directories
+ * - output: Built files destination directories
+ */
 exports.dir = {
     input: {
         content: `${exports.basedir.input}/content`,
@@ -39,9 +50,16 @@ exports.dir = {
     }
 };
 
+/**
+ * Input sources
+ */
 exports.input = {
     content: {
-        individuals: `${exports.dir.input.content}/index.md`,
+        individuals: [
+            `${exports.dir.input.content}/index.md`,
+        ],
+        examples: [],
+        docs: []
     },
     templates: `${exports.dir.input.templates}/**/*.pug`,
     styles: {
@@ -62,4 +80,12 @@ exports.input = {
     ]
 };
 
+/**
+ * Built files destination
+ */
 exports.output = exports.dir.output;
+
+/**
+ * Import project package info into configuration
+ */
+exports.package = JSON.parse(fs.readFileSync('./package.json'));

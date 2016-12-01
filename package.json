@@ -34,7 +34,6 @@
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "merge-stream": "^1.0.1",
-    "normalize-scss": "^6.0.0",
     "puglint-stylish": "^0.1.1"
   },
   "dependencies": {}
