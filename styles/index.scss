@@ -1,41 +1,55 @@
 // Home partial
 @import "base";
 
-.header {
+/**
+ * Index header
+ */
+
+/**
+ * Responsive size variables
+ */
+
+/* logo-img */
+$logo-img-lg-size: 166px;
+$logo-img-md-size: $logo-img-lg-size;
+$logo-img-sm-size: $logo-img-md-size;
+$logo-img-xs-size: 125px;
+
+
+/* Default: Large devices (large desktops, 1200px and up) */
+
+#header {
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
-  margin: {
-    top: 14%;
-    bottom: 18%;
-  };
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
 }
 
-.home-cover {
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 125vh;
+  z-index: -1;
+
   background: {
     image: url("../low-poly-texture-bg.jpg");
-    size: 100% auto;
-    position: center top;
+
+    size: cover;
+    position: center bottom;
     repeat: no-repeat;
   }
 }
 
-.header-brief {
-  margin: 0 auto;
-  margin-top: 10px;
-
-  color: white;
-  font-family: $body-font-family;
-  font-size: 1.2em;
-
-  a {
-    color: white;
-  }
-}
-
 .logo-img {
-  width: 166px;
-  height: 166px;
   margin: 0 auto;
+  width: $logo-img-lg-size;
+  height: $logo-img-lg-size;
 }
 
 .logo-font {
@@ -45,8 +59,97 @@
 }
 
 .logo-title {
-  margin: 0 auto;
-  padding-left: 10px;
+  margin: 0 auto 10px auto;
   font-size: 4em;
-  color: white;
+  color: $color-primary-light;
 }
+
+.header-brief {
+  margin: 0 auto 25px auto;
+  color: $color-primary-light;
+  font-family: $body-font-family;
+  font-size: 1.33em;
+
+  a, a:visited {
+    color: $color-primary-light;
+  }
+}
+
+.link-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#download {
+  margin: 0 auto;
+  display: flex;
+
+  li {
+    margin:0 15px 0 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.download-button {
+  display: block;
+  min-width: 166px;
+  padding: 12px 20px;
+  text-align: center;
+
+  background-color: rgba(243,245,246,.25);
+  &:hover {
+    background-color: rgba(243,245,246,.40);
+  }
+
+  border: 1px solid $color-primary-light;
+  border-radius: 3px;
+
+  color: $color-primary-light;
+
+  &:hover, &:active {
+    text-decoration: none;
+    color: $color-primary-light;
+  }
+}
+
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: $screen-xs-max){
+
+  .logo-img {
+    width: $logo-img-xs-size;
+    height: $logo-img-xs-size;
+  }
+
+  .logo-title {
+    font-size: 3em;
+  }
+
+  .header-brief {
+    font-size: 1.2em;
+  }
+
+  #download {
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      margin: 0 0 1em 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min){ }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) { }
+
+
+
+@import "partials/footer";

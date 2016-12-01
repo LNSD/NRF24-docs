@@ -5,23 +5,36 @@ append styles
     link(rel='stylesheet', href='/assets/stylesheets/index.css')
 
 append fonts
-    link(href='https://fonts.googleapis.com/css?family=Dosis:600' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Dosis:500,600' rel='stylesheet')
 
 block body
-    body.home-cover
-        nav
-            p NA | VI | GA | TI | ON
-        header.header
-
+    body
+        header#header
             img.logo-img(src='/assets/logo.svg')
-            h1.logo-title.logo-font NRF24
+            h1.logo-title.text-center.logo-font NRF24
             p.header-brief
                 a(href='https://www.arduino.cc/')
                     span.arduino-font ARDUINO
                     i.icon-arduino2
                 | &nbsp;driver library for nRF24L01(+)
+            ul#download.link-list
+                li
+                    a(href="").download-button
+                        i.fa.fa-github
+                        | &nbsp;&nbsp;View on Github
+                li
+                    a(href="").download-button
+                        i.fa.fa-arrow-circle-down
+                        | &nbsp;&nbsp;Download .zip
+                li
+                    a(href="").download-button
+                        i.fa.fa-arrow-circle-down
+                        | &nbsp;&nbsp;Download .tar.gz
+        .header-bg
+        .content
+            .container
+                .row
+                    .col-lg-12
+                        != contents
 
-        .container
-            .row
-                .col-lg-12
-                    != contents
+        include partials/_footer

@@ -1,20 +1,28 @@
 // Colors
-$lnsd-primary-light: #e6e6e6 !default;
-$lnsd-primary-middle: #b4b4b4 !default;
-$lnsd-primary-dark: #323232 !default;
+$color-primary-light: #f3f5f6 !default;
+$color-primary-middle: #b3b5b6 !default;
+$color-primary-dark: #323232 !default;
 
-$facebook-color: #3B5998 !default;
+/*$facebook-color: #3B5998 !default;
 $twitter-color: #55ACEE !default;
 $linkedin-color: #007BB6 !default;
 $googleplus-color: #D34836 !default;
 $github-color: $lnsd-primary-dark !default;
 $instagram-brown-color: #c08d64 !default;
 $instagram-blue-color: #517FA4 !default;
-$dribbble-color: #EA4C89 !default;
+$dribbble-color: #EA4C89 !default;*/
 
 // Fonts
 $body-font-family: "Source Sans Pro", sans-serif;
 $narrow-font-family: "Open Sans Condensed", sans-serif;
 $logo-font-family: 'Dosis', sans-serif;
+
+// Bootstrap
+$grid-gutter-width: 20px;
+$container-tablet: (720px + $grid-gutter-width);
+$container-desktop: (900px + $grid-gutter-width);
+$container-large-desktop: (900px + $grid-gutter-width);
+
+@import "bootstrap/variables";
 
 @import "modules/all";
