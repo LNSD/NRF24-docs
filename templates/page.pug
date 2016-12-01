@@ -1,15 +1,14 @@
 //- Page template
 extends _layout
 
-append vars
-    - var name = 'NRF24 index';
-
 append styles
     link(rel='stylesheet', href='/assets/stylesheets/page.css')
 
-block header
-    h1 this is the header
+include partials/_page-header
 
-block footer
-    footer
-        p This is the footer
+block content
+    .content
+        .container
+            .row
+                .col-lg-12
+                    != contents

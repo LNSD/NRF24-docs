@@ -1,7 +1,5 @@
 `use strict`;
 
-import fs from 'fs';
-
 /**
  * Base directories
  */
@@ -57,6 +55,7 @@ exports.input = {
     content: {
         individuals: [
             `${exports.dir.input.content}/index.md`,
+            `${exports.dir.input.content}/usage.md`,
         ],
         examples: [],
         docs: []
@@ -86,6 +85,11 @@ exports.input = {
 exports.output = exports.dir.output;
 
 /**
- * Import project package info into configuration
+ * Import project info into configuration
  */
-exports.package = JSON.parse(fs.readFileSync('./package.json'));
+exports.project = require('./config/project.config.js');
+
+/**
+ * Import website config into configuration
+ */
+exports.website = require('./config/website.config');

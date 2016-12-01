@@ -5,21 +5,15 @@ footer#footer
                 .footer-logo
                     img.footer-logo-img(src='/assets/logo.svg')
                     h1.footer-logo-title.logo-font NRF24
-            .col-md-offset-1.col-md-4.footer-section
-                h1.footer-section-title Section
-                ul.link-list
-                    li
-                        a(href="#footer") Getting started
-                    li
-                        a(href="#footer") Driver architecture
-                    li
-                        a(href="#footer") Library examples
-                    li
-                        a(href="#footer") Hardware
-
-            .col-md-4.footer-section
-                h1.footer-section-title Section
-                | Footer content
+            each nav, index in website.footer.nav
+               div.col-md-3.footer-section
+                    h1.footer-section-title
+                        = nav.title
+                    ul.link-list
+                        each page in nav.links
+                            li
+                                a(href=page.url)
+                                   != page.name
     hr
     .container
         .row

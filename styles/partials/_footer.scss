@@ -59,15 +59,20 @@
   }
 }
 
-#copyright {
-  color: $color-primary-light;
+.link-list {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin: 8px 0;
+
+    &:last-child, &:first-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
-.link-list li {
-  margin: 8px 0;
-
-  &:last-child, &:first-child {
-    margin-bottom: 0;
-  }
+#copyright {
+  color: $color-primary-light;
 }
 

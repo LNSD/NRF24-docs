@@ -108,7 +108,7 @@ $logo-img-xs-size: 125px;
 
   color: $color-primary-light;
 
-  &:hover, &:active {
+  &:hover, &:active, &:focus {
     text-decoration: none;
     color: $color-primary-light;
   }
