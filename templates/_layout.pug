@@ -6,6 +6,7 @@ html(lang='en')
         head
             block meta
                 meta(charset='utf-8')
+                meta(name="viewport" content="width=device-width, initial-scale=1")
 
             title
                 block title
@@ -34,5 +35,6 @@ html(lang='en')
                         a(href='mailto:contact@lnsd.es') &nbsp;email me
 
             block footer
-            block foot-scripts
-                // Scripts
+                include partials/_footer
+    block foot-scripts
+        // Scripts
