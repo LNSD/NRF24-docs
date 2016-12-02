@@ -5,9 +5,9 @@ exports.page = {
             name: 'Home',
             url: '/'
         },
-        usage: {
+        libinstall: {
             name: 'Library installation',
-            url: '/usage.html'
+            url: '/libinstall.html'
         },
         architecture: {
             name: 'Driver architecture',
@@ -77,7 +77,7 @@ exports.footer = {
             title: 'Get started',
             links: [
                 exports.page.index,
-                exports.page.usage,
+                exports.page.libinstall,
                 exports.page.architecture,
                 exports.page.examples,
                 exports.page.docs

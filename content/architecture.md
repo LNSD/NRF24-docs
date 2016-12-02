@@ -1,11 +1,11 @@
 ---
-title: Getting started
+title: NRF24 Architecture
 template: page
 ---
 
-# Getting started
+# NRF24 Architecture
 
-Explain how to use this library.
+Explain how this library is structured.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam dictum neque, ut euismod urna blandit et. Sed mattis mauris nunc, eu venenatis nisl ornare sit amet. Maecenas ultrices blandit eros. Duis viverra ipsum orci, ut cursus lacus ullamcorper at. Morbi pellentesque quam lectus, eget mollis metus hendrerit quis. Vivamus imperdiet, enim et tempor placerat, nisl dolor vulputate nisl, eu sagittis diam ex sed nisi. Nunc enim diam, interdum quis mollis eget, ornare ac mauris. Sed laoreet arcu ac leo posuere aliquet. Ut eget nulla ante. Integer gravida augue eget rutrum mollis. Suspendisse vel tortor at felis vestibulum accumsan. Nulla metus metus, lacinia sit amet commodo eget, imperdiet et nisi. Nunc in cursus nisi.
 

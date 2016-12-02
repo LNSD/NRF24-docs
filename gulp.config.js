@@ -55,10 +55,19 @@ exports.input = {
     content: {
         individuals: [
             `${exports.dir.input.content}/index.md`,
-            `${exports.dir.input.content}/usage.md`,
+            `${exports.dir.input.content}/libinstall.md`,
+            `${exports.dir.input.content}/architecture.md`,
+            `${exports.dir.input.content}/hardware.md`,
+            `${exports.dir.input.content}/cmake.md`,
+            `${exports.dir.input.content}/contribute.md`
         ],
-        examples: [],
-        docs: []
+        examples: [
+            `${exports.dir.input.content}/examples/**/*.md`,
+            `${exports.dir.input.content}/examples.md`
+        ],
+        docs: [
+            `${exports.dir.input.content}/doxygen.md`
+        ]
     },
     templates: `${exports.dir.input.templates}/**/*.pug`,
     styles: {
