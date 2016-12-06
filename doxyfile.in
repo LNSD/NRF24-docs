@@ -1566,7 +1566,7 @@ GENERATE_XML = YES
 # If a relative path is entered the value of OUTPUT_DIRECTORY will be
 # put in front of it. If left blank `xml' will be used as the default path.
 
-XML_OUTPUT = xml
+XML_OUTPUT = doxygen
 
 # If the XML_PROGRAMLISTING tag is set to YES Doxygen will
 # dump the program listings (including syntax highlighting

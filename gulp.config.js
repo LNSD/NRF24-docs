@@ -5,9 +5,9 @@
  */
 exports.basedir = {
     input: '.',
-    output: './html',
-    npm: './node_modules',
-    gulp: './gulp'
+    output: './dist',
+    temp: './tmp',
+    npm: './node_modules'
 };
 
 /**
@@ -33,6 +33,7 @@ exports.vendor = {
 exports.dir = {
     input: {
         content: `${exports.basedir.input}/content`,
+        doxygen: `${exports.basedir.input}/doxygen`,
         templates: `${exports.basedir.input}/templates`,
         styles: `${exports.basedir.input}/styles`,
         scripts: `${exports.basedir.input}/scripts`,
@@ -44,7 +45,8 @@ exports.dir = {
         css: `${exports.basedir.output}/assets/stylesheets/`,
         js: `${exports.basedir.output}/assets/scripts/`,
         assets: `${exports.basedir.output}/assets/`,
-        fonts: `${exports.basedir.output}/assets/fonts/`
+        fonts: `${exports.basedir.output}/assets/fonts/`,
+        temp: `${exports.basedir.temp}`
     }
 };
 
@@ -65,9 +67,21 @@ exports.input = {
             `${exports.dir.input.content}/examples/**/*.md`,
             `${exports.dir.input.content}/examples.md`
         ],
-        docs: [
-            `${exports.dir.input.content}/doxygen.md`
-        ]
+        docs: {
+            markdown: `${exports.dir.input.content}/doxygen.md`,
+            xml: {
+                template: `${exports.dir.input.doxygen}/combine.xslt`,
+                index: `${exports.dir.input.doxygen}/index.xml`
+            },
+            yaml: {
+                index: `${exports.dir.input.content}/docs/index.yaml`,
+                pages: [
+                    `${exports.dir.input.content}/docs/*.yaml`,
+                    `!${exports.dir.input.content}/docs/index.yaml`
+                ]
+            },
+            doxygen: `${exports.dir.temp}/doxygen.json`
+        }
     },
     templates: `${exports.dir.input.templates}/**/*.pug`,
     styles: {
