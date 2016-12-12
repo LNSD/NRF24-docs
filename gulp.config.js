@@ -33,7 +33,7 @@ exports.vendor = {
 exports.dir = {
     input: {
         content: `${exports.basedir.input}/content`,
-        doxygen: `${exports.basedir.input}/doxygen`,
+        doxygen: `${exports.basedir.input}/xml`,
         templates: `${exports.basedir.input}/templates`,
         styles: `${exports.basedir.input}/styles`,
         scripts: `${exports.basedir.input}/scripts`,
@@ -64,15 +64,12 @@ exports.input = {
             `${exports.dir.input.content}/contribute.md`
         ],
         examples: [
-            `${exports.dir.input.content}/examples/**/*.md`,
-            `${exports.dir.input.content}/examples.md`
+            `${exports.dir.input.content}/examples.md`,
+            `${exports.dir.input.content}/examples/**/*.md`
         ],
         docs: {
             markdown: `${exports.dir.input.content}/doxygen.md`,
-            xml: {
-                template: `${exports.dir.input.doxygen}/combine.xslt`,
-                index: `${exports.dir.input.doxygen}/index.xml`
-            },
+            xml: `${exports.dir.input.doxygen}/doxygen.xml`,
             yaml: {
                 index: `${exports.dir.input.content}/docs/index.yaml`,
                 pages: [
