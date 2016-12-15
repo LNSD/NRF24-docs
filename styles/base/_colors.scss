@@ -6,10 +6,10 @@ $theme-colors: (
         'primary': #0071B3,
         'secondary': #2A3647,
         'accent': #7088B4,
-        'logo': #FFF,
-        'footer': #394E57,
         'foreground': #7D8D98,
-        'background': #F3F5F6
+        'background': #FFF,
+        'logo': #FFF,
+        'footer': #394E57
 );
 
 @function theme-color($key: 'primary') {

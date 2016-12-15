@@ -26,7 +26,8 @@ $logo-img-xs-size: 125px;
   justify-content: center;
   align-items: center;
 
-  margin-bottom: 100px;
+  margin-top: 25px;
+  margin-bottom: 75px;
 }
 
 .header-bg {
@@ -46,22 +47,18 @@ $logo-img-xs-size: 125px;
   }
 }
 
-.logo-img {
-  margin: 0 auto;
-  width: $logo-img-lg-size;
-  height: $logo-img-lg-size;
-}
+#header {
+  & .logo-img {
+    margin: 0 auto;
+    width: $logo-img-lg-size;
+    height: $logo-img-lg-size;
+  }
 
-.logo-font {
-  font-family: $logo-font-family;
-  font-weight: 600;
-  letter-spacing: 0.075em;
-}
-
-.logo-title {
-  margin: 0 auto 10px auto;
-  font-size: 4em;
-  color: theme-color('logo');
+  & .logo-title {
+    margin: 0 auto 10px auto;
+    font-size: 4em;
+    color: theme-color('logo');
+  }
 }
 
 .header-brief {
@@ -114,15 +111,16 @@ $logo-img-xs-size: 125px;
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max){
 
-  .logo-img {
-    width: $logo-img-xs-size;
-    height: $logo-img-xs-size;
-  }
+  #header {
+    & .logo-img {
+      width: $logo-img-xs-size;
+      height: $logo-img-xs-size;
+    }
 
-  .logo-title {
-    font-size: 3em;
+    & .logo-title {
+      font-size: 3em;
+    }
   }
-
   .header-brief {
     font-size: 1.2em;
   }
@@ -146,16 +144,8 @@ $logo-img-xs-size: 125px;
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) { }
 
-@import "partials/navbar";
 
-.navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  background-color: transparent;
-}
+@include navbar-style('index');
 @import "partials/content";
 
 .content {
