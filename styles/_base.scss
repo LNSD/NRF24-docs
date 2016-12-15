@@ -11,3 +11,15 @@ $color-instagram: #833AB4 !default;
 $color-dribbble: #EA4C89 !default;
 
 @import "vendor/bootstrap-vars";
+
+.logo-font {
+  font-family: $logo-font-family;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}

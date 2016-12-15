@@ -4,11 +4,10 @@ extends _layout
 append styles
     link(rel='stylesheet', href='/assets/stylesheets/index.css')
 
-append fonts
-    link(href='https://fonts.googleapis.com/css?family=Dosis:500,600' rel='stylesheet')
-
 block body
     body
+        include partials/_navbar
+        +navbar(title)
         header#header
             img.logo-img(src='/assets/logo.svg')
             h1.logo-title.text-center.logo-font NRF24
@@ -18,18 +17,11 @@ block body
                     i.icon-arduino2
                 | &nbsp;driver library for nRF24L01(+)
             ul#download.link-list
-                li
-                    a(href=project.repository).download-button
-                        i.fa.fa-github
-                        | &nbsp;&nbsp;View on Github
-                li
-                    a(href=project.zipball).download-button
-                        i.fa.fa-arrow-circle-down
-                        | &nbsp;&nbsp;Download .zip
-                li
-                    a(href=project.tarball).download-button
-                        i.fa.fa-arrow-circle-down
-                        | &nbsp;&nbsp;Download .tar.gz
+                each item in website.header.index.links
+                    li
+                        a(href=item.url).download-button
+                            != item.name
+
         .header-bg
         .content
             .container

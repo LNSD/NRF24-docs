@@ -3,13 +3,13 @@
 // Color palette
 
 $theme-colors: (
-        'primary': #7D8D98,
+        'primary': #0071B3,
         'secondary': #2A3647,
         'accent': #7088B4,
-        'logo': #F3F5F6,
-        'footer': #394E57,
         'foreground': #7D8D98,
-        'background': #F3F5F6
+        'background': #FFF,
+        'logo': #FFF,
+        'footer': #394E57
 );
 
 @function theme-color($key: 'primary') {
@@ -20,9 +20,9 @@ $theme-colors: (
 
 $color-interval: 10% !global;
 
-@function theme-color-level($color-name: 'primary', $level: 0) {
+@function theme-color-level($color-name: 'primary', $level: 0, $color-dark: black) {
   $color: theme-color($color-name);
-  $color-base: if($level < 0, black, white);
+  $color-base: if($level < 0, $color-dark, white);
 
   @return mix($color-base, $color, abs($level) * $color-interval);
 }

@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ * Import project info into configuration
+ */
+let project = require('./project.config.js');
+
+
 exports.page = {
         index: {
             url: '/'
@@ -63,6 +69,59 @@ exports.donate = {
     url: '#donate'
 };
 
+
+exports.navbar = {
+    index: { url: exports.page.index.url },
+    menu: [
+        {
+            name: 'Home',
+            url: exports.page.index.url
+        },
+        {
+            name: 'Get started',
+            url: exports.page.gstarted.url
+        },
+        {
+            name: 'Docs',
+            url: exports.page.docs.url
+        },
+        {
+            name: 'Advanced',
+            url: exports.page.advanced.url
+        },
+        {
+            name: 'Download',
+            url: '#'
+        },
+        {
+            name: 'Donate',
+            url: '#donate'
+        },
+    ]
+};
+
+exports.header = {
+    index: {
+        links: [
+            {
+                name: '<i class="fa fa-github"></i>&nbsp;&nbsp;View on Github',
+                url: project.repository
+            },
+            {
+                name: '<i class="fa fa-beer"></i>&nbsp;&nbsp;Buy me a beer',
+                url: '#donate'
+            },
+            {
+                name: '<i class="fa fa-arrow-circle-down"></i>&nbsp;&nbsp;Download .zip',
+                url: project.zipball
+            },
+            {
+                name: '<i class="fa fa-arrow-circle-down"></i>&nbsp;&nbsp;Download .tar.gz',
+                url: project.tarball
+            }
+        ]
+    }
+};
 
 exports.footer = {
     nav: [
@@ -129,11 +188,11 @@ exports.footer = {
                 },
                 {
                     name: 'Submit an Issue',
-                    url: 'https://github.com/LNSD/NRF24/issues'
+                    url: project.repository + '/issues'
                 },
                 {
                     name: 'Submit an Enhancement',
-                    url: 'https://github.com/LNSD/NRF24/issues'
+                    url: project.repository + '/issues'
                 },
                 {
                     name: 'Project License',
