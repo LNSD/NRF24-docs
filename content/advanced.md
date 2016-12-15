@@ -1,5 +1,5 @@
 ---
-title: Build using CMake
+title: Advanced
 template: page
 ---
 
@@ -25,6 +25,7 @@ The [Arduino CMake](https://github.com/queezythegreat/arduino-cmake) build syste
   - Cross-platform: Windows, Linux, macOS.
   - Extensible build system, thanks to CMake.
 
+----
 
 ## Requirements
 
@@ -40,6 +41,8 @@ Arduino SDK must be installed in the default location. Arduino CMake will look f
  - **Windows:** `C:\Program Files\Arduino` or `C:\Program Files (x86)\Arduino"`
  
 > **Note:** Arduino CMake is not compatible with Cygwing file system
+
+----
 
 ## Build with Make
 
@@ -93,6 +96,8 @@ The Make scripts can be generated manually or using the provided `configure` scr
   $ make
   ```
 
+----
+
 ## Upload firmware (using CMake)
 
 Once everything built correctly we can upload the built firmware to the Arduino board. Depending on your Arduino you will have to update the serial port used for uploading the firmware.
@@ -117,6 +122,8 @@ or to upload a concrete target, run its corresponding `upload` target:
 where `TARGET_NAME` is the sub-project name (e.g. for `bsp` example ⇒ `bsp-upload`) 
 
 If you have an upload sync error then try resetting/power cycling the board before starting the upload process.
+
+----
 
 ## Clion integration
 

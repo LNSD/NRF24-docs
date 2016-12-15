@@ -1,5 +1,5 @@
 ---
-title: NRF24
+title: Home
 template: index
 ---
 
@@ -79,6 +79,7 @@ The bottom-most layer is Device Controller Driver (DCD) layer which is also refe
 
 ## Continue reading
 
+
 ### Get started
 
 - <dt>[Get started](/get-started)</dt>
@@ -97,6 +98,7 @@ The bottom-most layer is Device Controller Driver (DCD) layer which is also refe
     <dd>
         A complete collection of examples.
     </dd>
+
 
 ### NRF24
 
@@ -141,6 +143,7 @@ The bottom-most layer is Device Controller Driver (DCD) layer which is also refe
         NRF24 API documentation index.
     </dd>
 
+
 ### Advanced
 
 - <dt>[Arduino CMake](/advanced)</dt>
@@ -160,15 +163,12 @@ The bottom-most layer is Device Controller Driver (DCD) layer which is also refe
         Arduino development using Clion.
     </dd>
 
+
 ### Contribute
 
 - <dt>[How to Contribute](/contribute)</dt>
     <dd>
         How to contribute to this project. Contribution directives.
-    </dd>
-- <dt>[Buy me a Beer! <i class="fa fa-beer"></i>]()</dt>
-    <dd>
-        If you like my work, buy me a beer!
     </dd>
 - <dt>[Submit an Issue]()</dt>
     <dd>

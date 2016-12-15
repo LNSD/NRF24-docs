@@ -4,7 +4,9 @@ extends _layout
 append styles
     link(rel='stylesheet', href='/assets/stylesheets/page.css')
 
-include partials/_page-header
+block header
+    include partials/_navbar
+    +navbar(title)
 
 block content
     .content

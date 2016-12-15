@@ -1,0 +1,75 @@
+@import "../base/module";
+
+.navbar {
+  background-color: theme-color('primary');
+  padding: 15px 25px;
+}
+
+.navbar {
+  margin-bottom: 5em;
+}
+
+
+/**
+ * Logo
+ */
+
+.logo-font {
+  font-family: $logo-font-family;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.navbar-logo-img {
+  width: 50px;
+  height: 50px;
+}
+
+.navbar-logo-title {
+  color: theme-color('logo');
+  font-weight: 500;
+  font-size: 1.75em;
+
+  padding: {
+    left: 15px;
+    bottom: 9px;
+  }
+}
+
+/**
+ * Navbar menu
+ */
+
+.navbar-nav {
+
+  font-family: $title-font-family;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  & > li {
+    & > a {
+      padding: 15px 20px;
+      color: theme-color('background');
+      background-color: transparent;
+
+      &:hover, &:active, &:focus {
+        color: theme-color-level('background', -3, theme-color('primary'));
+        background-color: transparent;
+      }
+    }
+
+    .active {
+      color: theme-color-level('background', -3, theme-color('primary'));
+
+      &:hover, &:active, &:focus {
+        color: theme-color('background');
+      }
+    }
+  }
+}

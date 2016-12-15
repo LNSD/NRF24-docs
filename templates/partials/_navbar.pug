@@ -1,0 +1,16 @@
+mixin navbar(active)
+    nav.navbar.navbar-static-top
+        .container-fluid
+            if (active !== 'Home')
+                .navbar-header
+                    a(href=website.navbar.index.url).navbar-brand.logo-container
+                        img.navbar-logo-img(src='/assets/logo.svg')
+                        h1.navbar-logo-title.logo-font NRF24
+            ul.nav.navbar-nav.navbar-right
+                each item in website.navbar.menu
+                    if (item.name !== 'Home')
+                        li
+                            if(active === item.name)
+                                a(href=item.url).active!=item.name
+                            else
+                                a(href=item.url)!=item.name

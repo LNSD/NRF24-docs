@@ -10,7 +10,7 @@ html(lang='en')
 
             title
                 block title
-                    = title
+                    = 'NRF24 | ' + title
 
             block link
 
@@ -22,8 +22,9 @@ html(lang='en')
                 // Fonts
                 link(href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet')
                 link(href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500' rel='stylesheet')
+                link(href='https://fonts.googleapis.com/css?family=Dosis:500,600' rel='stylesheet')
 
-            block head-scripts
+    block head-scripts
                 // Scripts
 
     block body
@@ -33,7 +34,8 @@ html(lang='en')
                 h1 You shouldn't be watching this! :(
                     p
                         | This is worse than a 404. Please
-                        a(href='mailto:contact@lnsd.es') &nbsp;email me
+                        a(href='mailto:contact@lnsd.es')
+                        | &nbsp;email me
 
             block footer
                 include partials/_footer

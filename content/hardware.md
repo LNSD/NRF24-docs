@@ -9,13 +9,23 @@ template: page
 
 Describe hardware setup. Basic connections between nRF24 module and Arduino boards. 
 
+----
+
 ## Supported arduino boards list
 
 List current Arduino boards supported.
 
+----
+
+## nRF24L01 & nRF24L01+
+
+----
+
 ## Tested modules list
 
 List with images all the nRF24 tested modules.
+
+----
 
 ## NRF24 Development kits
 
