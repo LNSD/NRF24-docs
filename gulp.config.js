@@ -57,10 +57,10 @@ exports.input = {
     content: {
         individuals: [
             `${exports.dir.input.content}/index.md`,
-            `${exports.dir.input.content}/libinstall.md`,
-            `${exports.dir.input.content}/architecture.md`,
+            `${exports.dir.input.content}/get-started.md`,
+            `${exports.dir.input.content}/library-stack.md`,
             `${exports.dir.input.content}/hardware.md`,
-            `${exports.dir.input.content}/cmake.md`,
+            `${exports.dir.input.content}/advanced.md`,
             `${exports.dir.input.content}/contribute.md`
         ],
         examples: [
@@ -68,7 +68,7 @@ exports.input = {
             `${exports.dir.input.content}/examples/**/*.md`
         ],
         docs: {
-            markdown: `${exports.dir.input.content}/doxygen.md`,
+            markdown: `${exports.dir.input.content}/docs.md`,
             xml: `${exports.dir.input.doxygen}/doxygen.xml`,
             yaml: {
                 index: `${exports.dir.input.content}/docs/index.yaml`,

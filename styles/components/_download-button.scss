@@ -1,0 +1,25 @@
+@import "../base/colors";
+@import "button";
+
+$download-button-min-width: 166px;
+$download-button-padding: 12px 20px;
+
+$download-button-color: theme-color-level('primary', 8);
+$download-button-background-color: rgba(theme-color-level('primary', 8), .25);
+$download-button-background-color-hover: rgba(theme-color-level('primary', 8), .40);
+
+$download-button-border-color: theme-color-level('primary', 8);
+$download-button-border-style: solid;
+$download-button-border-width: 1px;
+
+
+@mixin download-button-theme($color) {
+  color: $color;
+  border-color: $color;
+  background-color: rgba($color, .25);
+
+  &:hover, &:active, &:focus {
+    color: $color;
+    background-color: rgba($color, .40);
+  }
+}

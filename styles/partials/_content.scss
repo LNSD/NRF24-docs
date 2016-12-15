@@ -1,0 +1,412 @@
+@import "../base";
+
+%content {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: theme-color-level('foreground', -3);
+  font-family: $body-font-family;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  text-align: justify;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  > * {
+    &:first-child {
+      margin-top: 0 !important;
+    }
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &::before {
+    display: table;
+    content: "";
+  }
+
+  &::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+
+  p, blockquote, ul, ol, dl, table, pre {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  /**
+   * Headers
+   */
+
+  .header-icon {
+    font-size: 1.25em;
+    color: theme-color('accent');
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $title-font-family;
+    font-weight: 700;
+    color: theme-color('secondary');
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 1.25em;
+    line-height: 1.25;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  h5 {
+    font-size: 0.875em;
+  }
+
+  h6 {
+    font-size: 0.85em;
+  }
+
+  h6 {
+    color: #777;
+  }
+
+  /**
+   * Emphasis
+   */
+
+  strong {
+    font-weight: 600;
+  }
+
+  /**
+   * Lists
+   */
+
+  ul {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  ol {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    ol {
+      list-style-type: lower-roman;
+    }
+  }
+  ul {
+    ol {
+      list-style-type: lower-roman;
+    }
+    ul ol, ol ol {
+      list-style-type: lower-alpha;
+    }
+  }
+  ol {
+    ul ol, ol ol {
+      list-style-type: lower-alpha;
+    }
+  }
+  ul, ol {
+    padding-left: 2em;
+  }
+  ul {
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  ol {
+    ol, ul {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  li {
+    > p {
+      margin-top: 16px;
+    }
+    + li {
+      margin-top: 0.25em;
+    }
+  }
+
+  ul, ol {
+    & + * {
+      margin-top: 1em;
+    }
+  }
+
+  /**
+   * Links
+   */
+
+  a {
+    font-weight: 500;
+    color: theme-color-level('accent', 0);
+    text-decoration: none;
+
+    &:active, &:hover {
+      color: theme-color-level('accent', 2);
+      outline-width: 0;
+    }
+  }
+
+  .anchor {
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+    line-height: 1;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  /**
+   * Images
+   */
+
+  img {
+    display: block;
+    margin: 2.5em auto;
+
+    border-style: none;
+
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+  }
+
+  svg:not(:root) {
+    overflow: hidden;
+  }
+
+  /**
+   * Code and syntax highlight
+   */
+
+  code, pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+
+  code {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 12px;
+  }
+
+  pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  }
+
+  code {
+    padding: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    &::before, &::after {
+      letter-spacing: -0.2em;
+      content: "\00a0";
+    }
+  }
+
+  pre {
+    word-wrap: normal;
+
+    > code {
+      padding: 0;
+      margin: 0;
+      font-size: 100%;
+      word-break: normal;
+      white-space: pre;
+      background: transparent;
+      border: 0;
+    }
+  }
+
+  .highlight {
+    margin-bottom: 16px;
+
+    pre {
+      margin-bottom: 0;
+      word-break: normal;
+      padding: 16px;
+      overflow: auto;
+      font-size: 85%;
+      line-height: 1.45;
+      background-color: #f7f7f7;
+      border-radius: 3px;
+    }
+  }
+
+  pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+
+    code {
+      display: inline;
+      padding: 0;
+      margin: 0;
+      overflow: visible;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: transparent;
+      border: 0;
+      &::before, &::after {
+        content: normal;
+      }
+    }
+  }
+
+  /**
+   * Tables
+   */
+
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    padding: 0;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+
+    th {
+      font-weight: bold;
+      padding: 6px 13px;
+      border: 1px solid #ddd;
+    }
+
+    td {
+      padding: 6px 13px;
+      border: 1px solid #ddd;
+    }
+
+    tr {
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      &:nth-child(2n) {
+        background-color: #f8f8f8;
+      }
+    }
+  }
+
+  /**
+   * Blockquotes
+   */
+
+  blockquote {
+    margin: 0.75em 0;
+  }
+
+  blockquote {
+    padding: 0.66em 1em;
+    color: theme-color-level('background', -4);
+    border-left: 0.25em solid theme-color-level('background', -1);
+
+    > {
+      :first-child {
+        margin-top: 0;
+      }
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /**
+   * Definition list
+   */
+
+  dt {
+    margin-bottom: 0.25em;
+  }
+
+  dd {
+    margin-left: 0.5em;
+    margin-bottom: 0.66em;
+  }
+
+  dl {
+    padding: 0;
+
+    dt {
+      padding: 0;
+      margin-top: 16px;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    dd {
+      padding: 0 16px;
+      margin-bottom: 16px;
+    }
+  }
+
+  /**
+   * Horizontal rule
+   */
+
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+
+  hr {
+    height: 0;
+    margin: 15px 0;
+    overflow: hidden;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  hr {
+    height: 0.1em;
+    padding: 0;
+    margin: 4.5em 0;
+    background-color: theme-color-level('background', 2);
+    border: 0;
+  }
+}

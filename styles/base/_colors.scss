@@ -1,0 +1,47 @@
+// https://theme.io/tutorials/aesthetic-sass-2-colors
+
+// Color palette
+
+$theme-colors: (
+        'primary': #7D8D98,
+        'secondary': #2A3647,
+        'accent': #7088B4,
+        'logo': #F3F5F6,
+        'footer': #394E57,
+        'foreground': #7D8D98,
+        'background': #F3F5F6
+);
+
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}
+
+// Tints and shades
+
+$color-interval: 10% !global;
+
+@function theme-color-level($color-name: 'primary', $level: 0) {
+  $color: theme-color($color-name);
+  $color-base: if($level < 0, black, white);
+
+  @return mix($color-base, $color, abs($level) * $color-interval);
+}
+
+// Opacity and Transparency
+
+$theme-opacity: (
+        'light': 0.8, // opacity used with lighter colors
+        'dark': 0.4   // opacity used with darker colors
+);
+
+@function theme-color-alpha($name: 'primary', $opacity: 0) {
+  $color: theme-color($name);
+
+  // Get the named opacity level, if it exists
+  @if map-key-exists($theme-opacity, $opacity) {
+    $opacity: map-get($theme-opacity, $opacity);
+  }
+
+  // Use rgba() to manipulate the color's alpha level
+  @return rgba($color, $opacity);
+}

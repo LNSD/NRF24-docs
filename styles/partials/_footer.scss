@@ -5,10 +5,10 @@
   padding-top: 20px;
   padding-bottom: 17px;
   background-color: #394E57;
-  color: $color-primary-middle;
+  color: theme-color('footer');
 
   hr {
-    border-top: 1px solid $color-primary-light;
+    border-top: 1px solid theme-color-level('footer', 2);
   }
 }
 
@@ -24,7 +24,7 @@
 }
 
 .footer-logo-title {
-  color: $color-primary-light;
+  color: theme-color-level('primary', 8);
   font-weight: 500;
   font-size: 1.8em;
   padding: {
@@ -40,7 +40,7 @@
   }
 
   h1 {
-    color: $color-primary-light;
+    color: theme-color-level('footer', 8);
     font-size: 1.2em;
     font-weight: 600;
     margin: {
@@ -50,11 +50,11 @@
   }
 
   a {
-    color: $color-primary-middle;
+    color: theme-color-level('footer', 5);
     text-decoration: none;
 
     &:hover {
-      color: $color-primary-light;
+      color: theme-color-level('footer', 8);
     }
   }
 }
@@ -73,6 +73,6 @@
 }
 
 #copyright {
-  color: $color-primary-light;
+  color: theme-color-level('footer', 7);
 }
 

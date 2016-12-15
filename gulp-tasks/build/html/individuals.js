@@ -3,6 +3,7 @@
 import frontMatter from 'gulp-front-matter';
 import markdown from 'gulp-markdown';
 import layout from 'gulp-layout';
+import rename from 'gulp-rename';
 
 /* Compile individual pug files into html */
 module.exports = function (gulp, config, connect) {
@@ -21,6 +22,12 @@ module.exports = function (gulp, config, connect) {
                 project: config.project,
                 website: config.website
             };
+        }))
+        .pipe(rename(function (path) {
+            if (path.basename !== 'index') {
+                path.dirname += '/' + path.basename;
+                path.basename = 'index';
+            }
         }))
         .pipe(gulp.dest(config.output.html))
         .pipe(connect.reload());

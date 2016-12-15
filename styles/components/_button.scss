@@ -1,0 +1,13 @@
+$button-padding: 12px 20px;
+$button-font-size: 1em;
+$button-border-width: 1px;
+
+%button {
+  display: inline-block;
+  padding: $button-padding;
+  font-size: $button-font-size;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-width: $button-border-width;
+  border-style: solid;
+}
