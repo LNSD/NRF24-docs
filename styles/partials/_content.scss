@@ -40,6 +40,12 @@
     margin-bottom: 1em;
   }
 
+  p, blockquote, ul, ol, dl, table, pre {
+    & + h1, & + h2, & + h3, & + h4, & + h5, & + h6 {
+      margin-top: 1.5em;
+    }
+  }
+
   /**
    * Headers
    */
@@ -406,7 +412,7 @@
     height: 0.1em;
     padding: 0;
     margin: 4.5em 0;
-    background-color: theme-color-level('background', 2);
+    background-color: theme-color-level('background', -0.25);
     border: 0;
   }
 }
