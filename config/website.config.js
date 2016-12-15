@@ -2,35 +2,27 @@
 
 exports.page = {
         index: {
-            name: 'Home',
             url: '/'
         },
-        libinstall: {
-            name: 'Library installation',
-            url: '/libinstall.html'
+        gstarted: {
+            url: '/get-started'
         },
-        architecture: {
-            name: 'Driver architecture',
-            url: '/architecture.html'
+        stack: {
+            url: '/library-stack'
         },
         examples: {
-            name: 'Library examples',
-            url: '/examples.html'
+            url: '/examples'
         },
         hardware: {
-            name: 'Hardware',
-            url: '/hardware.html'
+            url: '/hardware'
         },
-        cmake: {
-            name: 'Build using CMake',
-            url: '/cmake.html'
+        advanced: {
+            url: '/advanced'
         },
         contribute: {
-            name: 'How to Contribute',
-            url: '/contribute.html'
+            url: '/contribute'
         },
         docs: {
-            name: 'Documentation',
             url: '/docs'
         }
     };
@@ -71,42 +63,70 @@ exports.donate = {
     url: '#donate'
 };
 
+
 exports.footer = {
     nav: [
         {
-            title: 'Get started',
+            title: 'Library',
             links: [
-                exports.page.index,
-                exports.page.libinstall,
-                exports.page.architecture,
-                exports.page.examples,
-                exports.page.docs
+                {
+                    name: 'Home',
+                    url: exports.page.index.url
+                },
+                {
+                    name: 'Get started',
+                    url: exports.page.gstarted.url
+                },
+                {
+                    name: 'Examples',
+                    url: exports.page.examples.url
+                },
+                {
+                    name: 'NRF24 stack',
+                    url: exports.page.stack.url
+                },
+                {
+                    name: 'API documentation',
+                    url: exports.page.docs.url
+                }
             ]
         },
         {
             title: 'Advanced',
             links: [
-                exports.page.hardware,
                 {
-                    name: 'NRF24 Modules',
-                    url: `${exports.page.hardware.url}#modules`
+                    name: 'Hardware',
+                    url: exports.page.hardware.url
                 },
-                exports.page.cmake,
+                {
+                    name: 'Compatible Modules',
+                    url: exports.page.hardware.url + '#nrf24l01-modules'
+                },
+                {
+                    name: 'Development kits',
+                    url: exports.page.hardware.url + '#nrf24-development-kits'
+                },
                 {
                     name: 'Arduino CMake',
-                    url: `${exports.page.cmake.url}#arduino`
+                    url: exports.page.advanced.url
                 },
                 {
-                    name: 'CMake and CLion',
-                    url: `${exports.page.cmake.url}#clion`
+                    name: 'Arduino CMake development',
+                    url: exports.page.advanced.url + '#arduino-cmake-development'
                 }
             ]
         },
         {
             title: 'Contribute',
             links: [
-                exports.page.contribute,
-                exports.donate,
+                {
+                    name: 'How to contribute',
+                    url: exports.page.contribute.url
+                },
+                {
+                    name: 'Buy me a Beer!',
+                    url: exports.donate.url
+                },
                 {
                     name: 'Submit an Issue',
                     url: 'https://github.com/LNSD/NRF24/issues'

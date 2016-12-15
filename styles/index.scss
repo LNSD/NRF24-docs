@@ -26,7 +26,7 @@ $logo-img-xs-size: 125px;
   justify-content: center;
   align-items: center;
 
-  background-color: transparent;
+  margin-bottom: 100px;
 }
 
 .header-bg {
@@ -61,17 +61,17 @@ $logo-img-xs-size: 125px;
 .logo-title {
   margin: 0 auto 10px auto;
   font-size: 4em;
-  color: $color-primary-light;
+  color: theme-color('logo');
 }
 
 .header-brief {
   margin: 0 auto 25px auto;
-  color: $color-primary-light;
+  color: theme-color-level('primary', 8);
   font-family: $body-font-family;
   font-size: 1.33em;
 
   a, a:visited {
-    color: $color-primary-light;
+    color: theme-color-level('primary', 8);
   }
 }
 
@@ -92,25 +92,21 @@ $logo-img-xs-size: 125px;
   }
 }
 
+@import "components/download-button";
+
 .download-button {
-  display: block;
+  display: inline-block;
   min-width: 166px;
   padding: 12px 20px;
   text-align: center;
 
-  background-color: rgba(243,245,246,.25);
-  &:hover {
-    background-color: rgba(243,245,246,.40);
-  }
+  border: 1px solid;
+  border-radius: 2px;
 
-  border: 1px solid $color-primary-light;
-  border-radius: 3px;
-
-  color: $color-primary-light;
+  @include download-button-theme(theme-color-level('primary', 8));
 
   &:hover, &:active, &:focus {
     text-decoration: none;
-    color: $color-primary-light;
   }
 }
 
@@ -151,5 +147,15 @@ $logo-img-xs-size: 125px;
 @media (min-width: $screen-md-min) { }
 
 
+@import "partials/content";
+
+.content {
+  @extend %content;
+
+  #continue-reading ~ h3 {
+    text-align: left;
+    margin-bottom: 0.75em;
+  }
+}
 
 @import "partials/footer";
