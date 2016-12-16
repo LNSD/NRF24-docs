@@ -61,8 +61,8 @@ build.temp = { doxygen: {} };
 
 build.temp.doxygen = {
     in: src.doxygen,
-    basename: path.basename(src.docs.doxygen),
-    dest: out.temp
+    dest: out.temp,
+    basename: path.basename(src.docs.doxygen)
 };
 build.temp.doxygen = buildSrc(build.temp.doxygen);
 
@@ -87,13 +87,17 @@ copy.fonts = buildSrc(copy.fonts);
 
 //endregion
 
-//region Development gulp tasks
+//region Clean gulp tasks
 
 /** CLEAN **/
 const clean = { dist:{}, temp:{} };
 
 clean.dist = { dir: out.basedir };
 clean.temp = { dir: out.temp };
+
+//endregion
+
+//region Development gulp tasks
 
 /** WATCH **/
 const watch = { content:{}, scripts:{}, styles:{} };
