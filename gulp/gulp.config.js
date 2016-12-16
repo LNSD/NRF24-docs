@@ -1,30 +1,6 @@
 "use strict";
 
 import path from 'path';
-import _ from 'lodash';
-
-/**
- * Util functions
- */
-const buildSrc = function (task) {
-    task.src = [];
-
-    if (_.isArray(task.in)) {
-        task.src = task.in;
-    } else {
-        task.src = [task.in];
-    }
-
-    if (!_.isUndefined(task.exclude)) {
-        if (!_.isArray(task.exclude)) task.exclude = [task.exclude];
-
-        for (let glob of task.exclude) {
-            task.src.push('!' + glob);
-        }
-    }
-
-    return task;
-};
 
 /**
  * Config
@@ -33,6 +9,8 @@ const buildSrc = function (task) {
 import src from './config/src.config';
 import out from './config/out.config';
 import vendor from './config/vendor.config';
+
+import { buildSrc } from './config/util';
 
 //region Build gulp tasks
 
