@@ -2,5 +2,5 @@
 
 /* Build everything */
 module.exports = {
-    dep: ['build-temp']
+    dep: ['build-content', 'build-css', 'build-js', 'build-temp']
 };

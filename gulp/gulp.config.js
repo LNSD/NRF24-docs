@@ -27,7 +27,11 @@ copy.fonts = {
 const build = { };
 
 /** BUILD-CONTENT **/
-build.content = {};
+build.content = {
+    in: src.content,
+    out: out.content,
+    template: src.template
+};
 
 /** BUILD-CSS **/
 build.css = { bundle: {}, individuals: {} };

@@ -1,5 +1,7 @@
 "use strict";
 
+import path from 'path';
+
 /**
  * Sources base directory
  */
@@ -26,11 +28,10 @@ dir.fonts     = basedir.src + '/fonts';
 
 const content  = dir.content  + '/**/*.md';
 const examples = dir.examples + '/**/*.md';
+
 const docs = {};
 docs.doxygen = basedir.tmp + '/doxygen.json';
 
-
-const templates = dir.templates + '/**/*.pug';
 const css = dir.fonts + '/arduino/css/arduino-style.css';
 
 const styles = {};
@@ -42,9 +43,11 @@ const fonts = dir.fonts + '/arduino/font/*';
 
 const doxygen = basedir.doxygen + '/doxygen.xml';
 
-
+const template = (layout) => path.join(dir.templates, layout) + '.pug';
 
 export default {
     basedir: basedir.src,
+    content, examples, docs, css, styles, assets, fonts,
     doxygen,
-    content, examples, docs, templates, css, styles, assets, fonts };
+    template
+};
