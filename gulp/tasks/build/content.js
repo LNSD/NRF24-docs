@@ -15,7 +15,7 @@ module.exports = function (gulp, config, connect) {
         .pipe(layout(function(file) {
             // file: { 'history', 'cwd', 'base', 'stat', '_contents', 'data' }
             // console.log(file.data);
-            console.log(config.build.content.template(file.data.template));
+            // console.log(config.build.content.template(file.data.template));
             return {
                 title: file.data.title,
                 layout: config.build.content.template(file.data.template),

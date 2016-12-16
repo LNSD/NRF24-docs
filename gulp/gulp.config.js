@@ -30,7 +30,7 @@ const build = { };
 build.content = {
     in: src.content,
     out: out.content,
-    template: src.template
+    template: src.templates.file
 };
 
 /** BUILD-CSS **/
@@ -43,7 +43,8 @@ build.css.bundle = {
     vendor: [ vendor.bootstrap_sass.sass, vendor.font_awesome.sass ]
 };
 build.css.individuals = {
-    in: [ src.styles.individuals, '!' + src.styles.bundle ],
+    in: src.styles.individuals,
+    exclude: '!' + src.styles.bundle,
     out: out.stylesheets,
     vendor: [ vendor.bootstrap_sass.sass, vendor.font_awesome.sass ]
 };
@@ -72,6 +73,14 @@ clean.dist = { dir: out.basedir };
 clean.temp = { dir: out.temp };
 
 
+/** WATCH **/
+const watch = { content:{}, scripts:{}, styles:{} };
+
+watch.content = [ build.content.in, src.templates.all ];
+watch.styles  = [ build.css.bundle.in, build.css.bundle.css, build.css.individuals.in ];
+watch.scripts = [];
+
+
 
 /**
 * Import project info into configuration
@@ -87,7 +96,7 @@ const website = require('./config/website.config');
 export default {
     project,
     website,
-    copy, build, clean
+    copy, build, clean, watch
 };
 
 /*

@@ -43,11 +43,14 @@ const fonts = dir.fonts + '/arduino/font/*';
 
 const doxygen = basedir.doxygen + '/doxygen.xml';
 
-const template = (layout) => path.join(dir.templates, layout) + '.pug';
+const templates = {};
+templates.all = dir.templates + '/**/*.pug';
+templates.file = (layout) => path.join(dir.templates, layout) + '.pug';
+
 
 export default {
     basedir: basedir.src,
     content, examples, docs, css, styles, assets, fonts,
     doxygen,
-    template
+    templates
 };
