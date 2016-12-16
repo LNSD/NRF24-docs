@@ -2,6 +2,18 @@
 
 import path from 'path';
 
+
+/**
+ * Import project info into configuration
+ */
+const project = require('./config/project.config.js');
+
+/**
+ * Import website config into configuration
+ */
+const website = require('./config/website.config');
+
+
 /**
  * Config
  */
@@ -45,7 +57,7 @@ build.css.bundle = {
 };
 build.css.individuals = {
     in: src.styles.individuals,
-    exclude: '!' + src.styles.bundle,
+    exclude: src.styles.bundle,
     out: out.stylesheets,
     vendor: [ vendor.bootstrap_sass.sass, vendor.font_awesome.sass ]
 };
@@ -84,16 +96,6 @@ watch.scripts = [];
 
 /** SERVE **/
 const serve = { root: out.basedir };
-
-/**
-* Import project info into configuration
-*/
-const project = require('./config/project.config.js');
-
-/**
-* Import website config into configuration
-*/
-const website = require('./config/website.config');
 
 
 export default {
