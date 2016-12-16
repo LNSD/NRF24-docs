@@ -23,6 +23,7 @@ copy.fonts = {
     out: out.fonts
 };
 
+
 /** BUILD **/
 const build = { };
 
@@ -66,6 +67,7 @@ build.temp.doxygen = {
     out: out.temp
 };
 
+
 /** CLEAN **/
 const clean = { dist:{}, temp:{} };
 
@@ -80,7 +82,8 @@ watch.content = [ build.content.in, src.templates.all ];
 watch.styles  = [ build.css.bundle.in, build.css.bundle.css, build.css.individuals.in ];
 watch.scripts = [];
 
-
+/** SERVE **/
+const serve = { root: out.basedir };
 
 /**
 * Import project info into configuration
@@ -96,7 +99,7 @@ const website = require('./config/website.config');
 export default {
     project,
     website,
-    copy, build, clean, watch
+    copy, build, clean, watch, serve
 };
 
 /*

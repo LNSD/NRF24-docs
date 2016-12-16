@@ -25,7 +25,7 @@ gulp.task('watch', () => {
 /* Serve pages and enable livereload */
 gulp.task('serve', () => {
     connect.server({
-        root: config.basedir.output,
+        root: config.serve.root,
         livereload: true
     });
 });
