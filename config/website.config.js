@@ -1,5 +1,10 @@
 "use strict";
 
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
+
+
 /**
  * Import project info into configuration
  */
@@ -66,39 +71,10 @@ exports.social = {
 
 exports.donate = {
     name: 'Buy Me a Beer!',
-    url: '#donate'
+    url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CEVEWVZCLPCDC'
 };
 
-
-exports.navbar = {
-    index: { url: exports.page.index.url },
-    menu: [
-        {
-            name: 'Home',
-            url: exports.page.index.url
-        },
-        {
-            name: 'Get started',
-            url: exports.page.gstarted.url
-        },
-        {
-            name: 'Docs',
-            url: exports.page.docs.url
-        },
-        {
-            name: 'Advanced',
-            url: exports.page.advanced.url
-        },
-        {
-            name: 'Download',
-            url: '#'
-        },
-        {
-            name: 'Donate',
-            url: '#donate'
-        },
-    ]
-};
+exports.navbar = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'navbar.yaml'), 'utf8'));
 
 exports.header = {
     index: {
@@ -108,16 +84,12 @@ exports.header = {
                 url: project.repository
             },
             {
+                name: '<i class="fa fa-arrow-circle-down"></i>&nbsp;&nbsp;Downloads',
+                url: "/downloads"
+            },
+            {
                 name: '<i class="fa fa-beer"></i>&nbsp;&nbsp;Buy me a beer',
-                url: '#donate'
-            },
-            {
-                name: '<i class="fa fa-arrow-circle-down"></i>&nbsp;&nbsp;Download .zip',
-                url: project.zipball
-            },
-            {
-                name: '<i class="fa fa-arrow-circle-down"></i>&nbsp;&nbsp;Download .tar.gz',
-                url: project.tarball
+                url: exports.donate.url
             }
         ]
     }

@@ -1,0 +1,50 @@
+index:
+  url: "/"
+
+menu:
+  - name: Home
+    url: "/"
+
+  - name: NRF24
+    menu:
+
+    - name: Get started
+    - name: Requirements
+      url: "/get-started"
+    - name: Hardware setup
+      url: "/get-started#hardware-setup"
+    - name: Library installation
+      url: "/get-started#library-installation"
+    - name: Library examples
+      url: "/examples"
+
+    - name: "divider"
+
+    - name: Advanced
+    - name: Library stack
+      url: "/library-stack"
+    - name: Hardware
+      url: "/hardware"
+    - name: Arduino CMake development
+      url: "/advanced"
+
+    - name: "divider"
+
+    - name: Contribute
+    - name: Contribution directives
+      url: "/contribute"
+    - name: "Github repo&nbsp;&nbsp;<i class=\"fa fa-github\"></i>"
+      url: "https://github.com/LNSD/NRF24"
+    - name: Submit an Issue
+      url: "https://github.com/LNSD/NRF24/issues"
+    - name: Submit an Enhancement
+      url: "https://github.com/LNSD/NRF24/issues"
+
+  - name: "Docs"
+    url: "/docs"
+
+  - name: "Downloads"
+    url: "#"
+
+  - name: "Donate <i class=\"fa fa-beer\"></i>"
+    url: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CEVEWVZCLPCDC"

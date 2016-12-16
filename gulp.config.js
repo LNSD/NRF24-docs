@@ -19,6 +19,7 @@ exports.vendor = {
         `${exports.basedir.npm}/font-awesome/scss`
     ],
     js: {
+        jquery: `${exports.basedir.npm}/jquery/dist`,
         bootstrap: `${exports.basedir.npm}/bootstrap-sass/assets/javascripts`
     },
     fonts: {
@@ -91,7 +92,11 @@ exports.input = {
     css: [
         `${exports.dir.input.fonts}/arduino/css/arduino-style.css`
     ],
-    scripts: `${exports.dir.input.scripts}/**/*.js`,
+    scripts: [
+        `${exports.vendor.js.jquery}/jquery.js`,
+        `${exports.vendor.js.bootstrap}/bootstrap/dropdown.js`,
+        `${exports.dir.input.scripts}/**/*.js`
+    ],
     assets: `${exports.dir.input.assets}/**/*`,
     fonts: [
         `${exports.vendor.fonts.fa}/*`,
