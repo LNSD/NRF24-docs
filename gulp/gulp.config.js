@@ -7,7 +7,7 @@ import path from 'path';
  */
 
 import src from './config/src.config';
-import out from './config/out.config';
+import out from './config/dest.config';
 import vendor from './config/vendor.config';
 
 import { buildSrc } from './config/util';

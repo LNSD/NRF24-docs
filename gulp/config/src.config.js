@@ -27,7 +27,6 @@ dir.fonts     = basedir.src + '/fonts';
  */
 
 const content  = dir.content  + '/**/*.md';
-const examples = dir.examples + '/**/*.md';
 
 const docs = {};
 docs.doxygen = basedir.tmp + '/doxygen.json';
@@ -50,7 +49,7 @@ templates.file = (layout) => path.join(dir.templates, layout) + '.pug';
 
 export default {
     basedir: basedir.src,
-    content, examples, docs, css, styles, assets, fonts,
+    content, docs, css, styles, assets, fonts,
     doxygen,
     templates
 };
