@@ -5,6 +5,18 @@ import markdown from 'gulp-markdown';
 import layout from 'gulp-layout';
 import rename from 'gulp-rename';
 
+
+/**
+ * Import project info into configuration
+ */
+const project = require('../../config/project.config.js');
+
+/**
+ * Import website config into configuration
+ */
+const website = require('../../config/website.config');
+
+
 /* Compile individual pug files into html */
 module.exports = function (gulp, config, connect) {
     return gulp.src(config.build.content.src)
@@ -19,8 +31,8 @@ module.exports = function (gulp, config, connect) {
             return {
                 title: file.data.title,
                 layout: config.build.content.template(file.data.template),
-                project: config.project,
-                website: config.website
+                project,
+                website
             };
         }))
         .pipe(rename(function (path) {

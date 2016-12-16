@@ -4,17 +4,6 @@ import path from 'path';
 import _ from 'lodash';
 
 /**
- * Import project info into configuration
- */
-const project = require('./config/project.config.js');
-
-/**
- * Import website config into configuration
- */
-const website = require('./config/website.config');
-
-
-/**
  * Util functions
  */
 const buildSrc = function (task) {
@@ -141,8 +130,6 @@ const serve = { root: out.basedir };
 //endregion
 
 export default {
-    project,
-    website,
     copy, build, clean, watch, serve
 };
 
