@@ -7,7 +7,7 @@ import rename from 'gulp-rename';
 
 /* Compile individual pug files into html */
 module.exports = function (gulp, config, connect) {
-    return gulp.src(config.build.content.in)
+    return gulp.src(config.build.content.src)
         .pipe(frontMatter({
             property: 'data'
         }))
@@ -29,6 +29,6 @@ module.exports = function (gulp, config, connect) {
                 path.basename = 'index';
             }
         }))
-        .pipe(gulp.dest(config.build.content.out))
+        .pipe(gulp.dest(config.build.content.dest))
         .pipe(connect.reload());
 };

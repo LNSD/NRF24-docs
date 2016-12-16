@@ -7,7 +7,7 @@ import {processors} from 'xml2js';
 
 /* Compile doxygen generated xml files into json */
 module.exports = function (gulp, config) {
-    return gulp.src(config.build.temp.doxygen.in)
+    return gulp.src(config.build.temp.doxygen.src)
         .pipe(xml2json({
             explicitArray: false,
             mergeAttrs: true,
@@ -17,5 +17,5 @@ module.exports = function (gulp, config) {
         }))
         .pipe(jsonFormat(2))
         .pipe(rename(config.build.temp.doxygen.basename))
-        .pipe(gulp.dest(config.build.temp.doxygen.out));
+        .pipe(gulp.dest(config.build.temp.doxygen.dest));
 };

@@ -16,7 +16,6 @@ requireTasks({
 
 /* Watch these files for changes and run the task on update */
 gulp.task('watch', () => {
-    console.log(JSON.stringify(config.watch.styles, null, 4));
     gulp.watch(config.watch.content, ['build-content']);
     gulp.watch(config.watch.styles,  ['build-css']);
     gulp.watch(config.watch.scripts, ['build-js']);

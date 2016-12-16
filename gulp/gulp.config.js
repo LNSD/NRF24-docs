@@ -1,7 +1,7 @@
 "use strict";
 
 import path from 'path';
-
+import _ from 'lodash';
 
 /**
  * Import project info into configuration
@@ -15,6 +15,29 @@ const website = require('./config/website.config');
 
 
 /**
+ * Util functions
+ */
+const buildSrc = function (task) {
+    task.src = [];
+
+    if (_.isArray(task.in)) {
+        task.src = task.in;
+    } else {
+        task.src = [task.in];
+    }
+
+    if (!_.isUndefined(task.exclude)) {
+        if (!_.isArray(task.exclude)) task.exclude = [task.exclude];
+
+        for (let glob of task.exclude) {
+            task.src.push('!' + glob);
+        }
+    }
+
+    return task;
+};
+
+/**
  * Config
  */
 
@@ -22,19 +45,7 @@ import src from './config/src.config';
 import out from './config/out.config';
 import vendor from './config/vendor.config';
 
-
-/** COPY **/
-const copy = { assets: {}, fonts: {} };
-
-copy.assets = {
-    in: src.assets,
-    out: out.assets
-};
-copy.fonts = {
-    in: [ src.fonts, vendor.font_awesome.fonts ],
-    out: out.fonts
-};
-
+//region Build gulp tasks
 
 /** BUILD **/
 const build = { };
@@ -42,33 +53,41 @@ const build = { };
 /** BUILD-CONTENT **/
 build.content = {
     in: src.content,
-    out: out.content,
+    dest: out.content,
     template: src.templates.file
 };
+build.content = buildSrc(build.content);
+
 
 /** BUILD-CSS **/
 build.css = { bundle: {}, individuals: {} };
 
 build.css.bundle = {
     in: src.styles.bundle,
-    out: out.stylesheets,
+    dest: out.stylesheets,
     css: src.css,
     vendor: [ vendor.bootstrap_sass.sass, vendor.font_awesome.sass ]
 };
+build.css.bundle = buildSrc(build.css.bundle);
+
 build.css.individuals = {
     in: src.styles.individuals,
     exclude: src.styles.bundle,
-    out: out.stylesheets,
+    dest: out.stylesheets,
     vendor: [ vendor.bootstrap_sass.sass, vendor.font_awesome.sass ]
 };
+build.css.individuals = buildSrc(build.css.individuals);
+
 
 /** BUILD-JS **/
 build.js = { bundle: {} };
 
 build.js.bundle = {
     in: [vendor.jquery, vendor.bootstrap_sass.dropdown],
-    out: out.scripts
+    dest: out.scripts
 };
+build.js.bundle = buildSrc(build.js.bundle);
+
 
 /** BUILD-TEMP **/
 build.temp = { doxygen: {} };
@@ -76,16 +95,38 @@ build.temp = { doxygen: {} };
 build.temp.doxygen = {
     in: src.doxygen,
     basename: path.basename(src.docs.doxygen),
-    out: out.temp
+    dest: out.temp
 };
+build.temp.doxygen = buildSrc(build.temp.doxygen);
 
+//endregion
+
+//region Copy gulp tasks
+
+/** COPY **/
+const copy = { assets: {}, fonts: {} };
+
+copy.assets = {
+    in: src.assets,
+    dest: out.assets
+};
+copy.assets = buildSrc(copy.assets);
+
+copy.fonts = {
+    in: [ src.fonts, vendor.font_awesome.fonts ],
+    dest: out.fonts
+};
+copy.fonts = buildSrc(copy.fonts);
+
+//endregion
+
+//region Development gulp tasks
 
 /** CLEAN **/
 const clean = { dist:{}, temp:{} };
 
 clean.dist = { dir: out.basedir };
 clean.temp = { dir: out.temp };
-
 
 /** WATCH **/
 const watch = { content:{}, scripts:{}, styles:{} };
@@ -97,6 +138,7 @@ watch.scripts = [];
 /** SERVE **/
 const serve = { root: out.basedir };
 
+//endregion
 
 export default {
     project,

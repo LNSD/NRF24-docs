@@ -1,8 +1,7 @@
 "use strict";
 
 /* Copy fonts to output assets directory */
-module.exports = function (gulp, config, connect) {
-    gulp.src(config.copy.fonts.in)
-        .pipe(gulp.dest(config.copy.fonts.out))
-        .pipe(connect.reload());
+module.exports = function (gulp, config) {
+    gulp.src(config.copy.fonts.src)
+        .pipe(gulp.dest(config.copy.fonts.dest));
 };
