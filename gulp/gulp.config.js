@@ -1,5 +1,7 @@
 "use strict";
 
+import path from 'path';
+
 /**
  * Config
  */
@@ -24,6 +26,9 @@ copy.fonts = {
 /** BUILD **/
 const build = { };
 
+/** BUILD-CONTENT **/
+build.content = {};
+
 /** BUILD-CSS **/
 build.css = { bundle: {}, individuals: {} };
 
@@ -33,7 +38,6 @@ build.css.bundle = {
     css: src.css,
     vendor: [ vendor.bootstrap_sass.sass, vendor.font_awesome.sass ]
 };
-
 build.css.individuals = {
     in: [ src.styles.individuals, '!' + src.styles.bundle ],
     out: out.stylesheets,
@@ -48,6 +52,15 @@ build.js.bundle = {
     out: out.scripts
 };
 
+/** BUILD-TEMP **/
+build.temp = { doxygen: {} };
+
+build.temp.doxygen = {
+    in: src.doxygen,
+    basename: path.basename(src.docs.doxygen),
+    out: out.temp
+};
+
 /** CLEAN **/
 const clean = { dist:{}, temp:{} };
 
@@ -55,7 +68,23 @@ clean.dist = { dir: out.basedir };
 clean.temp = { dir: out.temp };
 
 
-export default { copy, build, clean };
+
+/**
+* Import project info into configuration
+*/
+const project = require('./config/project.config.js');
+
+/**
+* Import website config into configuration
+*/
+const website = require('./config/website.config');
+
+
+export default {
+    project,
+    website,
+    copy, build, clean
+};
 
 /*
 /!**

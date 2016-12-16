@@ -2,5 +2,5 @@
 
 /* Compile intermediate files into temp directory */
 module.exports = {
-    dep: []
+    dep: ['build-temp-doxygen']
 };
