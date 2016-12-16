@@ -12,13 +12,50 @@ mixin navbar(active)
                             | NRF24
 
             ul.nav.navbar-nav.navbar-right
-                if (active === 'Home')
-                    each item in website.navbar.menu
-                        if (item.name !== 'Home')
-                            li
-                                a(href=item.url)!=item.name
-                else
-                    each item in website.navbar.menu
-                        li
-                            a(href=item.url, class=(active === item.name)?"active":"")
-                                != item.name
+                - var menu = website.navbar.menu
+                if (active !== 'Home')
+                    +navbar-item(menu[0])
+
+                each item in menu.slice(1, menu.length)
+                    if (item.name !== 'Home')
+                        +navbar-item(item)
+
+
+
+
+mixin navbar-item(item)
+    if (item.menu !== undefined)
+        +navbar-dropdown(item)
+    else
+        if (item.name === 'divider')
+            +navbar-dropdown-divider()
+        else
+            if (item.url === undefined)
+                +navbar-dropdown-header(item)
+            else
+                li
+                    a(href=item.url, class=(active === item.name) ? "active" : "")
+                        != item.name
+
+mixin navbar-dropdown-header(item)
+    li.dropdown-header
+        != item.name
+
+mixin navbar-dropdown-divider()
+    li(role="separator").divider
+
+mixin navbar-dropdown(item)
+    li.dropdown
+        a(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").dropdown-toggle!=item.name
+        ul.dropdown-menu
+            each entry in item.menu
+                +navbar-item(entry)
+        //
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>

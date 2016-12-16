@@ -41,6 +41,8 @@
     "gulp-util": "^3.0.7",
     "gulp-xml2json": "^0.1.5",
     "gulp-yaml": "^1.0.1",
+    "jquery": "^3.1.1",
+    "js-yaml": "^3.7.0",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "merge-stream": "^1.0.1",

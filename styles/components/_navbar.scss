@@ -22,6 +22,17 @@ $navbar-hover-color: (
   @return map-get($navbar-hover-color, $style)
 }
 
+// dropdown-header color
+
+$navbar-dropdown-header-color: (
+        'index': theme-color-level('accent', 2),
+        'page': theme-color-level('primary', 2)
+);
+
+@function navbar-dropdown-header-color($style: 'page') {
+  @return map-get($navbar-dropdown-header-color, $style)
+}
+
 // position
 
 @mixin navbar-position($style: 'index') {
@@ -81,31 +92,55 @@ $navbar-hover-color: (
    * nav
    */
 
-  .navbar-nav {
+  .navbar-nav > li {
+    & > a {
+      font-family: $title-font-family;
+      letter-spacing: 1px;
+      text-transform: uppercase;
 
-    font-family: $title-font-family;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+      padding: 15px 20px;
+      color: theme-color('background');
+      background-color: transparent;
 
-    & > li {
-      & > a {
-        padding: 15px 20px;
-        color: theme-color('background');
-        background-color: transparent;
-
-        &:hover, &:active, &:focus {
-          color: navbar-hover-color($style);
-          background-color: transparent;
-        }
-      }
-
-      .active {
+      &:hover, &:active, &:focus {
         color: navbar-hover-color($style);
-
-        &:hover, &:active, &:focus {
-          color: theme-color('background');
-        }
+        background-color: transparent;
       }
+    }
+
+    .active {
+      color: navbar-hover-color($style);
+
+      &:hover, &:active, &:focus {
+        color: theme-color('background');
+      }
+    }
+  }
+
+  .nav .open > a {
+    &, &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+
+  /**
+   * Dropdown
+   */
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu {
+    border-radius: 0;
+
+    .dropdown-header {
+      padding: 3px 20px;
+      font-size: 0.8em;
+      font-weight: 700;
+      color: navbar-dropdown-header-color($style);
+      text-transform: uppercase;
+      white-space: nowrap;
     }
   }
 }
