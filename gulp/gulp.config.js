@@ -10,7 +10,7 @@ import src from './config/src.config';
 import out from './config/dest.config';
 import vendor from './config/vendor.config';
 
-import { buildSrc } from './config/util';
+import { buildSrc, buildWatchList } from './config/util';
 
 //region Build gulp tasks
 
@@ -102,9 +102,10 @@ clean.temp = { dir: out.temp };
 /** WATCH **/
 const watch = { content:{}, scripts:{}, styles:{} };
 
-watch.content = [ build.content.in, src.templates.all ];
-watch.styles  = [ build.css.bundle.in, build.css.bundle.css, build.css.individuals.in ];
+watch.content = buildWatchList(build.content, src.templates.all);
+watch.styles  = buildWatchList([build.css.bundle, build.css.bundle.css], build.css.individuals);
 watch.scripts = [];
+
 
 /** SERVE **/
 const serve = { root: out.basedir };
