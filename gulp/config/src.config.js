@@ -26,26 +26,35 @@ dir.fonts     = basedir.src + '/fonts';
  * Source files
  */
 
+/** CONTENT **/
 const content  = dir.content  + '/**/*.md';
 
+/** EXAMPLES **/
+
+/** DOCS **/
 const docs = {};
 docs.doxygen = basedir.tmp + '/doxygen.json';
 
-const css = dir.fonts + '/arduino/css/arduino-style.css';
-
-const styles = {};
-styles.bundle      = dir.styles + '/bundle.scss';
-styles.individuals = dir.styles + '/**/*.scss';
-
-const assets = dir.assets + '/**/*';
-const fonts = dir.fonts + '/arduino/font/*';
-
-const doxygen = basedir.doxygen + '/doxygen.xml';
-
+/** TEMPLATES **/
 const templates = {};
 templates.all = dir.templates + '/**/*.pug';
 templates.file = (layout) => path.join(dir.templates, layout) + '.pug';
 
+/** STYLES **/
+const styles = {};
+styles.bundle      = dir.styles + '/bundle.scss';
+styles.individuals = dir.styles + '/**/*.scss';
+
+const css = dir.fonts + '/arduino/css/arduino-style.css';
+
+/** SCRIPTS **/
+
+/** ASSETS & FONTS **/
+const assets = dir.assets + '/**/*';
+const fonts = dir.fonts + '/arduino/font/*';
+
+/** TEMP **/
+const doxygen = basedir.doxygen + '/doxygen.xml';
 
 export default {
     basedir: basedir.src,

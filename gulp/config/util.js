@@ -11,13 +11,17 @@ export function buildSrc (task) {
     task.src = [];
 
     if (_.isArray(task.in)) {
-        task.src = task.in;
+        task.src = _.flatten(task.in);
     } else {
         task.src = [task.in];
     }
 
     if (!_.isUndefined(task.exclude)) {
-        if (!_.isArray(task.exclude)) task.exclude = [task.exclude];
+        if (_.isArray(task.exclude)) {
+            task.exclude = _.flatten(task.exclude);
+        } else {
+            task.exclude = [task.exclude];
+        }
 
         for (let glob of task.exclude) {
             task.src.push('!' + glob);
