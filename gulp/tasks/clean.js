@@ -2,5 +2,5 @@
 
 /* Clean everything */
 module.exports = {
-    dep: ['clean-temp', 'clean-output']
+    dep: ['clean-temp', 'clean-dist']
 };

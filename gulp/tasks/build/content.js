@@ -5,9 +5,21 @@ import markdown from 'gulp-markdown';
 import layout from 'gulp-layout';
 import rename from 'gulp-rename';
 
+
+/**
+ * Import project info into configuration
+ */
+const project = require('../../config/project.config.js');
+
+/**
+ * Import website config into configuration
+ */
+const website = require('../../config/website.config');
+
+
 /* Compile individual pug files into html */
 module.exports = function (gulp, config, connect) {
-    return gulp.src(config.input.content.individuals)
+    return gulp.src(config.build.content.src)
         .pipe(frontMatter({
             property: 'data'
         }))
@@ -15,12 +27,12 @@ module.exports = function (gulp, config, connect) {
         .pipe(layout(function(file) {
             // file: { 'history', 'cwd', 'base', 'stat', '_contents', 'data' }
             // console.log(file.data);
-            // console.log(`${config.dir.input.templates}/${file.data.template}.pug`);
+            // console.log(config.build.content.template(file.data.template));
             return {
                 title: file.data.title,
-                layout: `${config.dir.input.templates}/${file.data.template}.pug`,
-                project: config.project,
-                website: config.website
+                layout: config.build.content.template(file.data.template),
+                project,
+                website
             };
         }))
         .pipe(rename(function (path) {
@@ -29,6 +41,6 @@ module.exports = function (gulp, config, connect) {
                 path.basename = 'index';
             }
         }))
-        .pipe(gulp.dest(config.output.html))
+        .pipe(gulp.dest(config.build.content.dest))
         .pipe(connect.reload());
 };
